@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrackSpawner : MonoBehaviour
 {
-    [SerializeField] private Car car;
+    [SerializeField] private Transform car;
     [SerializeField] private TrackSegment[] segmentPrefabs;
     private const float trackBufferLength = 2000;
 
@@ -18,7 +18,7 @@ public class TrackSpawner : MonoBehaviour
     }
     void Update()
     {
-        if(car.transform.position.z > nextEnd - trackBufferLength)
+        if(car.position.z > nextEnd - trackBufferLength)
         {
             SpawnSegment();
         }

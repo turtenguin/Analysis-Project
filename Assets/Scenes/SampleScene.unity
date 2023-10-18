@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7abcc4f288f81459ae600fff105168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 700725351}
+  car: {fileID: 700725352}
 --- !u!4 &445236303
 Transform:
   m_ObjectHideFlags: 0
@@ -5124,7 +5124,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 700725352}
-  - component: {fileID: 700725351}
+  - component: {fileID: 700725355}
   - component: {fileID: 700725354}
   - component: {fileID: 700725353}
   m_Layer: 0
@@ -5134,30 +5134,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &700725351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 700725350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2a71339110a5649a77086b762e24ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveForce: {x: 5, y: 0, z: 10}
-  pullPoint: {x: 0, y: 0, z: 0.5}
-  drag: {x: 0, y: -0.1, z: -0.005}
-  reverseDrag: 10
-  hoverForce: 2
-  hoverHeight: 2
-  driftImpulse: 3
-  driftForce: 10
-  driftRotTorque: 2
-  autoAccel: 1
-  slowRotationBy: 0.8
-  correctRotationBy: 0.5
 --- !u!4 &700725352
 Transform:
   m_ObjectHideFlags: 0
@@ -5202,6 +5178,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &700725355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700725350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9761bfa1ac2bd744abeb22cdf34558e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -5491,7 +5479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceText: {fileID: 56530367}
   speedText: {fileID: 820024604}
-  car: {fileID: 700725351}
+  carRb: {fileID: 700725354}
 --- !u!114 &1079520067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10482,7 +10470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda0d8d6ac491a841aee60bcaece2428, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 700725351}
+  car: {fileID: 700725352}
   segmentPrefabs:
   - {fileID: 7964187622491017339, guid: fe0f5639549ab1a4ba3af677a6efb8f9, type: 3}
   - {fileID: 7964187622491017339, guid: abf798c1b27439e42b15f75806cbc0c9, type: 3}

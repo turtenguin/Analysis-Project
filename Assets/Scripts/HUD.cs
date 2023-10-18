@@ -7,19 +7,12 @@ public class HUD : MonoBehaviour
 {
     public Text distanceText;
     public Text speedText;
-    public Car car;
 
-    private Rigidbody carRb;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        carRb = car.GetComponent<Rigidbody>();
-    }
+    public Rigidbody carRb;
 
     void Update()
     {
-        distanceText.text = "Distance: " + (int)car.transform.position.z;
+        distanceText.text = "Distance: " + (int)carRb.transform.position.z;
         speedText.text = "Speed: " + (int)carRb.velocity.z;
     }
 }

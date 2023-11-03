@@ -4,32 +4,55 @@ using UnityEngine;
 
 public class PhysicsMoveDriftState : ICarState
 {
-    private CarStateDriver carStateDriver;
+    protected CarStateDriver carStateDriver;
+    private Timer timer;
     
     public ControlMode ControlMode
     {
         get { return ControlMode.physics; }
     }
 
-    private Direction direction;
-    private Rigidbody carRb;
+    protected Direction direction;
+    protected Rigidbody carRb;
 
-    private static float driftForce = 10;
-    private static float driftAdjustForce = 10;
-    private static float driftImpulse = 3;
+    private const float driftForce = 10;
+    private const float driftAdjustForce = 15;
+    private const float driftImpulseFactor = .75f;
+    private const float chargeTime = 1;
 
-    private Vector2 targetUp;
+    protected Vector2 targetUp;
 
     public PhysicsMoveDriftState(Direction direction)
     {
+        timer = Timer.Instance;
         carStateDriver = CarStateDriver.Instance;
         this.direction = direction;
         this.carRb = carStateDriver.CarRigidbody;
 
         targetUp = new Vector3((int)direction, 1, -1);
 
-        Vector3 driftImpulseForce = new Vector3((int)direction * driftImpulse, 0, 0);
-        carRb.AddForce(driftImpulseForce, ForceMode.Impulse);
+        InitDrift();
+    }
+
+    protected virtual void InitDrift()
+    {
+        if((direction == Direction.left && carRb.velocity.x > 0) || (direction == Direction.right && carRb.velocity.x < 0))
+        {
+            Debug.Log("Stop");
+            Vector3 driftImpulseVelocityChange = new Vector3(-carRb.velocity.x * driftImpulseFactor, 0, 0);
+            carRb.AddForce(driftImpulseVelocityChange, ForceMode.VelocityChange);
+        }
+        
+
+        timer.TimerInvoke(OnCharged, chargeTime);
+    }
+
+    private void OnCharged()
+    {
+        if(carStateDriver.CarState == this)
+        {
+            carStateDriver.CarState = new PhysicsMoveChargedDriftState(direction);
+        }
     }
 
     public void EnterDrift()
@@ -37,7 +60,7 @@ public class PhysicsMoveDriftState : ICarState
         //Do nothing
     }
 
-    public void ExitDrift()
+    public virtual void ExitDrift()
     {
         carStateDriver.CarState = new PhysicsMoveNormalState();
     }

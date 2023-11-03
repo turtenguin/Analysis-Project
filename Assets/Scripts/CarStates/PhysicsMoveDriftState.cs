@@ -38,7 +38,6 @@ public class PhysicsMoveDriftState : ICarState
     {
         if((direction == Direction.left && carRb.velocity.x > 0) || (direction == Direction.right && carRb.velocity.x < 0))
         {
-            Debug.Log("Stop");
             Vector3 driftImpulseVelocityChange = new Vector3(-carRb.velocity.x * driftImpulseFactor, 0, 0);
             carRb.AddForce(driftImpulseVelocityChange, ForceMode.VelocityChange);
         }

@@ -11,7 +11,7 @@ public class PhysicsMoveNormalState : ICarState
 
     static PhysicsMoveNormalState()
     {
-        moveForce = new Vector3(5, 0, 10);
+        moveForce = new Vector3(5, 0, 5);
     }
 
     public PhysicsMoveNormalState()

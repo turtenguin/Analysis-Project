@@ -10,9 +10,19 @@ public class CarStateDriver : MonoBehaviour
     public Rigidbody CarRigidbody { get; private set; }
     public BoxCollider Collider { get; private set; }
 
+    public ParticleSystem leftBooster;
+    public ParticleSystem rightBooster;
+    public ParticleSystem leftChargedBooster;
+    public ParticleSystem rightChargedBooster;
+
     private InputActions inputActionMap;
     private InputAction moveAxis;
     private InputAction driftAction;
+
+    public AudioSource audioSource;
+    public AudioClip charge;
+    public AudioClip boost;
+
 
     public ICarState CarState { get; set; }
     public ControlMode CurrentControlMode
